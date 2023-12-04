@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Web con IndexedDB</title>
+</head>
+<body>
+
+    <form id="formularioArticulo">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+        <br>
+
+        <label for="subtitulo">Subtítulo:</label>
+        <input type="text" id="subtitulo" name="subtitulo" required>
+        <br>
+
+        <label for="contenido">Contenido:</label>
+        <textarea id="contenido" name="contenido" rows="4" required></textarea>
+        <br>
+
+        <label for="imagen1">URL de la Imagen 1:</label>
+        <input type="url" id="imagen1" name="imagen1">
+        <br>
+
+        <label for="imagen2">URL de la Imagen 2:</label>
+        <input type="url" id="imagen2" name="imagen2">
+        <br>
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <ul id="articulos"></ul>
+
+    <script src="main.js"></script>
+</body>
+</html>
