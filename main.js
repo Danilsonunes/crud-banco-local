@@ -87,6 +87,7 @@ function guardarArticuloEnIndexedDB(articulo) {
 
             requestAdd.onsuccess = function(event) {
                 alert("Artículo guardado correctamente");
+                limpiarFormulario()
                 mostrarArticulosDesdeIndexedDB();
             };
 
@@ -104,39 +105,46 @@ function guardarArticuloEnIndexedDB(articulo) {
 }
 
 function mostrarArticulosDesdeIndexedDB() {
-    const request = indexedDB.open("miDB", 1);
+    // Verificar si la base de datos ya existe
+    const dbRequest = indexedDB.open("miDB");
 
-    request.onsuccess = function(event) {
+    dbRequest.onsuccess = function(event) {
         const db = event.target.result;
-        const transaction = db.transaction(["articulos"], "readonly");
-        const objectStore = transaction.objectStore("articulos");
+      
+        if (db) {
+            // La base de datos existe, proceder con la lógica para mostrar artículos
+            const transaction = db.transaction(["articulos"], "readonly");
+            const objectStore = transaction.objectStore("articulos");
 
-        const requestGetAll = objectStore.getAll();
+            const requestGetAll = objectStore.getAll();
 
-        requestGetAll.onsuccess = function(event) {
-            const articulos = event.target.result;
-            const listaArticulos = document.getElementById("articulos");
+            requestGetAll.onsuccess = function(event) {
+                const articulos = event.target.result;
+                const listaArticulos = document.getElementById("articulos");
 
-            listaArticulos.innerHTML = "";
+                listaArticulos.innerHTML = "";
 
-            articulos.forEach(function(articulo) {
-                // Agregamos botones para actualizar y eliminar
-                listaArticulos.innerHTML += `
-                    <li>
-                        ${articulo.title} - ${articulo.subTitle}
-                        <button onclick="actualizarArticulo('${articulo.id}')">Actualizar</button>
-                        <button onclick="eliminarArticulo('${articulo.id}')">Eliminar</button>
-                    </li>`;
-            });
-        };
+                articulos.forEach(function(articulo) {
+                    // Agregamos botones para actualizar y eliminar
+                    listaArticulos.innerHTML += `
+                        <li>
+                            ${articulo.title} - ${articulo.subTitle}
+                            <button onclick="actualizarArticulo('${articulo.id}')">Actualizar</button>
+                            <button onclick="eliminarArticulo('${articulo.id}')">Eliminar</button>
+                        </li>`;
+                });
+            };
 
-        requestGetAll.onerror = function(event) {
-            console.error("Error al obtener los artículos:", event.target.error);
-        };
+            requestGetAll.onerror = function(event) {
+                console.error("Error al obtener los artículos:", event.target.error);
+            };
+        } else {
+            console.error("La base de datos 'miDB' no existe.");
+        }
     };
 
-    request.onerror = function(event) {
-        console.error("Error al abrir la base de datos:", event.target.error);
+    dbRequest.onerror = function(event) {
+        console.error("Error al intentar abrir la base de datos:", event.target.error);
     };
 }
 
@@ -207,4 +215,3 @@ function eliminarArticulo(id) {
     };
 }
 
-mostrarArticulosDesdeIndexedDB();

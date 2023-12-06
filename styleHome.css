@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #e8dbf3;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > h1 {
+    margin: 10px 50% 10px 10px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+
+header > img {
+    width: 250px;
+    border-radius: 8px;
+    margin: 10px 10px 10px 20%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 8px;
+    margin: 25px;
+    box-shadow: 2px 2px 10px grey;
+    height: 80px;
+    transition: all 0.8s;
+    padding: 5px;
+}
+
+a:hover {
+    box-shadow: 2px 2px 10px rgb(243, 106, 232);
+}
+
+a img {
+    height: 80px;
+    margin: 5px;
+}
+
+li {
+    list-style: none;
+}
+
+
+#articulos {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+#articulos > h2 {
+    width: 70%;
+    margin-left: 10px;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ span {
+    width: 70%;
+    margin-left: 10px;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+footer {
+    background-color: #d8a5ff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }

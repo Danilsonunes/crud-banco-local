@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Web con IndexedDB</title>
+    <link rel="stylesheet" href="styleForm.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/blog1.png" />
+    <title>CMS de My Blog</title>
 </head>
 <body>
-
+    <h1>CMS de My Blog</h1>
     <form id="formularioArticulo">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" required>
@@ -33,6 +35,8 @@
     </form>
 
     <ul id="articulos"></ul>
+
+    <div id="paginaArticulo"></div>
 
     <script src="main.js"></script>
 </body>
