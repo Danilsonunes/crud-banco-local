@@ -46,5 +46,5 @@ console.error("Error al abrir la base de datos:", event.target.error);
 
 function imagenNoEncontrada(img) {
     // Establecemos la URL de la imagen predeterminada en caso de error
-    img.src = 'img/Logo.png';
+    img.src = 'img/sinFoto.jpg';
 }

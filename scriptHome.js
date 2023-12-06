@@ -63,5 +63,5 @@ request.onerror = function (event) {
 
 function imagenNoEncontrada(img) {
     // Establecemos la URL de la imagen predeterminada en caso de error
-    img.src = 'img/Logo.png';
+    img.src = 'img/sinFoto.jpg';
 }
